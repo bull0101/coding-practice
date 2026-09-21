@@ -96,8 +96,6 @@ int main(){
         };
 
         int spaceneed = max_firstname_length - current_firstname_length;
-        
-        cout << "student " << i+1 << " : ";
 
         for(int j = 0 ; j < spaceneed ; j++){
             cout << " ";
