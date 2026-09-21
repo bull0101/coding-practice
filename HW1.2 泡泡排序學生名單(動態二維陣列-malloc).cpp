@@ -19,17 +19,14 @@ void bubblesort(char **arr , int size){
     for(int i = 0 ; i < (size-1) ; i++){
         for(int j = 0 ; j < (size-i-1) ; j++){
             
-            // 取得名字的長度
             int len0 = strlen(arr[j]);
             int len1 = strlen(arr[j+1]);
 
-            // 利用 長度-1 取得最後一個字元
             char x0 = arr[j][len0 - 1];
             char x1 = arr[j+1][len1 - 1];
 
-            // 比較 ASCII 碼並交換「指標」
             if((int)x0 > (int)x1){
-                char* temp;         // 這裡改成 char*
+                char* temp;         
                 temp = arr[j+1];
                 arr[j+1] = arr[j];
                 arr[j] = temp;
