@@ -1,13 +1,10 @@
 #include <iostream>
-#include <cstring>
-#include <cstdlib>
-#include <cctype>
+#include <cstring> 
+#include <cctype>  
 using namespace std;
 
 bool isonlyEnglish(const char* str) {
-
     for (int i = 0; str[i] != '\0'; i++) {
-
         if (!::isalpha(static_cast<unsigned char>(str[i]))) {
             return false;
         }
@@ -19,17 +16,14 @@ void bubblesort(char **arr , int size){
     for(int i = 0 ; i < (size-1) ; i++){
         for(int j = 0 ; j < (size-i-1) ; j++){
             
-            // 取得名字的長度
             int len0 = strlen(arr[j]);
             int len1 = strlen(arr[j+1]);
 
-            // 利用 長度-1 取得最後一個字元
             char x0 = arr[j][len0 - 1];
             char x1 = arr[j+1][len1 - 1];
 
-            // 比較 ASCII 碼並交換「指標」
             if((int)x0 > (int)x1){
-                char* temp;         // 這裡改成 char*
+                char* temp;
                 temp = arr[j+1];
                 arr[j+1] = arr[j];
                 arr[j] = temp;
@@ -46,16 +40,15 @@ int main(){
     cout << "how many students?";
 
     while(true){      
-        if(cin >> student_num && student_num > 0){
+        if(cin >> student_num and student_num > 0){
             break;
         }
         else{
             cin.clear();
             cin.ignore(10000,'\n');
-
             cout << "輸入為非正整數 請重新輸入";
-        };
-    };
+        }
+    }
 
     cout << "what's the max name length";
 
@@ -66,16 +59,14 @@ int main(){
         else{
             cin.clear();
             cin.ignore(10000,'\n');
-
             cout << "輸入為非正整數 請重新輸入";
-        };
-    };
+        }
+    }
 
-    char** arr = (char**) malloc(sizeof(char*) * student_num);
+    char** arr = new char*[student_num];
 
     for(int i = 0 ; i < student_num ; i++){
-
-        arr[i] = (char*) malloc(sizeof(char) * (max_namelength + 1));
+        arr[i] = new char[max_namelength + 1];
     }
 
     for(int i = 0; i < student_num; i++){
@@ -92,23 +83,22 @@ int main(){
             else{
                 break;
             }
-        };
+        }
         strcpy(arr[i], buffer);
-    };
+    }
 
-    bubblesort(arr,student_num);
+    bubblesort(arr, student_num);
 
     cout << " - 學生名單 - " << endl;
 
     for(int i = 0; i < student_num; i++){
-        
-        cout << "Student " << (i + 1) << ": " << arr[i] << "\n";
+        cout << "Student " << (i + 1) << " : " << arr[i] << "\n";
     }
 
     for (int i = 0; i < student_num; i++) {
-        free(arr[i]);
+        delete[] arr[i];
     }
-    free(arr);
-    return 0;
+    delete[] arr;
 
+    return 0;
 };
